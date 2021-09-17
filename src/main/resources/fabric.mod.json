@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Small Artifacts",
-  "description": "Adds fiew artifact for player use.",
+  "description": "Adds small artifact for player use.",
   "authors": [
     "jptrzy"
   ],
