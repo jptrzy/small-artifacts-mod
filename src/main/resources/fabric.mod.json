@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "small_artifacts",
+  "version": "${version}",
+
+  "name": "Small Artifacts",
+  "description": "Adds fiew artifact for player use.",
+  "authors": [
+    "jptrzy"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "gpl-3.0",
+  "icon": "assets/small-artifacts/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.jptrzy.small.artifacts.Main"
+    ]
+  },
+  "mixins": [
+    "small-artifacts.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16",
+    "trinkets": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.jptrzy.small.artifacts.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "PiglinBrainMixin",
+    "EndermanEntityMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
