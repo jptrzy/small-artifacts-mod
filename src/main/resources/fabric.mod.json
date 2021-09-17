@@ -10,11 +10,11 @@
   ],
   "contact": {
     "homepage": "",
-    "sources": ""
+    "sources": "https://github.com/jptrzy/small-artifacts-mod"
   },
 
   "license": "gpl-3.0",
-  "icon": "assets/small-artifacts/icon.png",
+  "icon": "assets/small_artifacts/icon.png",
 
   "environment": "*",
   "entrypoints": {
