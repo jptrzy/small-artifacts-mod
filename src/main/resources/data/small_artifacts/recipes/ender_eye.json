@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " c ",
+    "abc",
+    " c "
+  ],
+  "key": {
+    "a": {"item": "minecraft:amethyst_shard"},
+    "b": {"item": "minecraft:ender_pearl"},
+    "c": {"item": "minecraft:rotten_flesh"}
+
+  },
+  "result": {
+    "item": "small_artifacts:ender_eye"
+  }
+}

@@ -8,7 +8,7 @@ public class Main implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		System.out.println("It's works.");
+		System.out.println();
 
 		ItemsRegister.init();
 	}

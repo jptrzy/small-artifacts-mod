@@ -1,4 +1,8 @@
 {
-  "item.small_artifacts.gold_ring": "Golden Ring",
-  "item.small_artifacts.ender_eye": "Ender Eye"
+
+  "item.small_artifacts.gold_ring": "Gilded Copper Ring",
+  "item.small_artifacts.gold_ring.description": "Piglins loves gold no matter its form, but if they knew about this (heresy), they wouldn't be so nice.",
+
+  "item.small_artifacts.ender_eye": "Ender Eye",
+  "item.small_artifacts.ender_eye.description": "Ahhh, rotten enderman eye."
 }

@@ -27,7 +27,7 @@ public class ItemsRegister {
     }
 
     public static Item add(String item_id, Item.Settings settings){
-        Item item = new Item(settings);
+        Item item = new ArtifactsItem(settings);
         items.put(item_id, item);
         return item;
     }
