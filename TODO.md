@@ -6,6 +6,7 @@
 * gallery
 * achievements
 * change ender eye texture
+* piglin frowning copper ring 
 
 ## IDEAS:
 * balloon

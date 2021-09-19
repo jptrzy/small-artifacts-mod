@@ -1,5 +1,11 @@
 {
 
+  "item.small_artifacts.stray_soul": "Stray Soul",
+  "item.small_artifacts.stray_soul.description": "He couldn't find a home during his lifetime, however in his afterlife he wants to help adventures with this meter.",
+
+  "item.small_artifacts.scute_cape": "Scute Cape",
+  "item.small_artifacts.scute_cape.description": "Good defense agains arrows, but wearing it makes a little bit of a pain.",
+
   "item.small_artifacts.gold_ring": "Gilded Copper Ring",
   "item.small_artifacts.gold_ring.description": "Piglins loves gold no matter its form, but if they knew about this (heresy), they wouldn't be so nice.",
 

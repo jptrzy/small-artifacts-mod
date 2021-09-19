@@ -1,11 +1,13 @@
-package net.jptrzy.small.artifacts;
+package net.jptrzy.small.artifacts.Items;
 
 import com.mojang.datafixers.types.templates.List;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -14,8 +16,17 @@ import org.spongepowered.asm.mixin.Shadow;
 
 public class ArtifactsItem extends Item {
 
+    protected final ItemGroup group;
+    private final Rarity rarity;
+    private final int maxCount;
+
+
     public ArtifactsItem(Settings settings) {
         super(settings);
+
+        this.group = ItemGroup.MISC;
+        this.maxCount = 1;
+        this.rarity = Rarity.UNCOMMON;
     }
 
     @Override

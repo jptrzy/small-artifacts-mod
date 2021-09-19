@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "aca",
+    "ada"
+  ],
+  "key": {
+    "a": {"item": "minecraft:copper_ingot"},
+    "b": {"item": "minecraft:chorus_fruit"},
+    "c": {"item": "minecraft:soul_lantern"},
+    "d": {"item": "minecraft:soul_sand"}
+  },
+  "result": {
+    "item": "small_artifacts:stray_soul"
+  }
+}
