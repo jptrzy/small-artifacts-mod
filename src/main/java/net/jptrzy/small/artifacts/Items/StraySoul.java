@@ -25,15 +25,14 @@ import java.util.Optional;
 
 public class StraySoul extends ArtifactsItem {
 
-    private final Rarity rarity;
+//    private final Rarity rarity;
 
 //    private int max_using_tick = 60;
 //    private int using_tick = max_using_tick;
 
 
     public StraySoul(Settings settings) {
-        super(settings);
-        this.rarity = Rarity.RARE;
+        super(settings.rarity(Rarity.RARE));
     }
 
     //@Environment(EnvType.CLIENT)

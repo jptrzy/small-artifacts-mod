@@ -16,17 +16,13 @@ import org.spongepowered.asm.mixin.Shadow;
 
 public class ArtifactsItem extends Item {
 
-    protected final ItemGroup group;
-    private final Rarity rarity;
-    private final int maxCount;
+//    protected final ItemGroup group;
+//    private final Rarity rarity;
+//    private final int maxCount;
 
 
     public ArtifactsItem(Settings settings) {
-        super(settings);
-
-        this.group = ItemGroup.MISC;
-        this.maxCount = 1;
-        this.rarity = Rarity.UNCOMMON;
+        super(settings.group(ItemGroup.MISC).rarity(Rarity.UNCOMMON).maxCount(1));
     }
 
     @Override
