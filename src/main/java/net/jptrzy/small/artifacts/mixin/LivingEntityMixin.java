@@ -35,7 +35,6 @@ public class LivingEntityMixin {
             Optional<TrinketComponent> optional = TrinketsApi.getTrinketComponent((LivingEntity) (Object) this);
             if(optional.isPresent() && optional.get().isEquipped(ItemsRegister.SCUTE_CAPE)){
                 if(!p.getEntityWorld().isClient()){
-                    System.out.println(p.getHungerManager().getExhaustion());
                     p.getHungerManager().setExhaustion( p.getHungerManager().getExhaustion() + 8 );
                 }
                 ci.setReturnValue(true);

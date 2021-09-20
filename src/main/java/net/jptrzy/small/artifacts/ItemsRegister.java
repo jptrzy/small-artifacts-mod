@@ -30,9 +30,6 @@ public class ItemsRegister {
     }
 
     public static void init() {
-
-        //STRAY_SOUL.use = USE_STRAY_SOUL;
-
         for ( Map.Entry<String, Item> entry : items.entrySet() ) {
             Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, entry.getKey()), entry.getValue());
         }
