@@ -33,25 +33,28 @@ public class StraySoul extends ArtifactsItem {
         user.getItemCooldownManager().set(this, 60);
 
         if(!world.isClient()){
-            MinecraftServer ms = world.getServer();
-            ServerPlayerEntity sp = ms.getPlayerManager().getPlayer(user.getUuid());
-            ServerWorld sw = user.getServer().getWorld(sp.getSpawnPointDimension());
+            MinecraftServer server = world.getServer();
+            ServerPlayerEntity sPlayer = server.getPlayerManager().getPlayer(user.getUuid());
 
-            BlockPos pos = sp.getSpawnPointPosition();
+            ServerWorld sWorld = server.getWorld(sPlayer.getSpawnPointDimension());
+            BlockPos player_spawn = sPlayer.getSpawnPointPosition();
 
-            Optional<Vec3d> optional = PlayerEntity.findRespawnPosition(sw, pos, sp.getSpawnAngle(), false, false);
+            Optional<Vec3d> optional = Optional.empty();
 
-            Vec3d finnal_spawn = new Vec3d(0,0,0);
-
-            if(pos == null || !optional.isPresent()) {
-                pos = sw.getSpawnPos();
-                finnal_spawn = new Vec3d(pos.getX(), pos.getY(), pos.getZ());
-            }else{
-                finnal_spawn = optional.get();
+            if(player_spawn != null) { // With this check works faster, because differently findRespawnPosition use repeat itself
+                // Check if player_spawn exist
+                optional = PlayerEntity.findRespawnPosition(sWorld, player_spawn, sPlayer.getSpawnAngle(), false, true);
             }
 
-            sp.teleport(sw, finnal_spawn.x, finnal_spawn.y, finnal_spawn.z, sp.getSpawnAngle(), 0.5F);
-            sw.playSound(null, pos, SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.PLAYERS, 0.4f, 1f);
+            if(optional.isPresent()){
+                player_spawn = new BlockPos(optional.get());
+            }else{
+                sWorld = server.getOverworld();
+                player_spawn = sWorld.getSpawnPos();
+            }
+
+            sPlayer.teleport(sWorld, player_spawn.getX(), player_spawn.getY(), player_spawn.getZ(), sPlayer.getSpawnAngle(), 0.5F);
+            sWorld.playSound(null, player_spawn, SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.PLAYERS, 0.4f, 1f);
         }
 
         return TypedActionResult.pass(user.getStackInHand(hand));

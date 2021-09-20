@@ -11,6 +11,7 @@ import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -30,22 +31,9 @@ public class PiglinBrainMixin
     @Shadow
     private static void runAwayFrom(PiglinEntity piglin, LivingEntity target){};
 
-    private static PiglinEntity piglin;
-
-    @Inject(method = "create", at = @At("HEAD"), cancellable = true)
-    private void create(PiglinEntity piglin, Brain<PiglinEntity> brain, CallbackInfoReturnable<Brain<?>> ci) {
-        this.piglin = piglin;
-    }
-
     @Inject(method = "wearsGoldArmor", at = @At("HEAD"), cancellable = true)
-    private void wearsGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> ci) {
-        TrinketComponent tc = TrinketsApi.getTrinketComponent(entity).get();
-        if (tc.isEquipped(ItemsRegister.STRAY_SOUL)){
-            //PiglinBrain pb = (PiglinBrain) (Object) this;
-            runAwayFrom(this.piglin, entity);
-        }
-
-        if (tc.isEquipped(ItemsRegister.GOLD_RING)) ci.setReturnValue(true);
+    private static void wearsGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> ci) {
+        if (TrinketsApi.getTrinketComponent(entity).get().isEquipped(ItemsRegister.GOLD_RING)) ci.setReturnValue(true);
     }
 
     @Inject(method = "consumeOffHandItem", at = @At("HEAD"), cancellable = true)
