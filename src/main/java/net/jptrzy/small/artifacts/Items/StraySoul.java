@@ -3,6 +3,9 @@ package net.jptrzy.small.artifacts.Items;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.mob.PiglinBrain;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -13,10 +16,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Rarity;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -30,6 +30,8 @@ public class StraySoul extends ArtifactsItem {
     }
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        System.out.println("USE USE");
+
         user.getItemCooldownManager().set(this, 60);
 
         if(!world.isClient()){
@@ -58,5 +60,22 @@ public class StraySoul extends ArtifactsItem {
         }
 
         return TypedActionResult.pass(user.getStackInHand(hand));
+    }
+
+    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        System.out.println("ENTITY USE");
+
+        user.getItemCooldownManager().set(this, 60);
+
+        if(entity instanceof PiglinEntity){
+            //PiglinBrain.runAwayFrom
+            entity.getBrain().forget(MemoryModuleType.ANGRY_AT);
+            entity.getBrain().forget(MemoryModuleType.ATTACK_TARGET);
+            entity.getBrain().forget(MemoryModuleType.WALK_TARGET);
+            entity.getBrain().remember(MemoryModuleType.AVOID_TARGET, user, (long)TimeHelper.betweenSeconds(5, 20).get(entity.world.random));
+            return ActionResult.SUCCESS;
+        }
+
+        return ActionResult.PASS;
     }
 }
