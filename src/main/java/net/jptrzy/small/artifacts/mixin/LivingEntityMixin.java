@@ -21,11 +21,6 @@ import java.util.Optional;
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
 
-//    @Shadow
-
-//    @Shadow
-//    public HungerManager getHungerManager(){return null;};
-
     @Inject(method = "blockedByShield", at = @At("HEAD"), cancellable = true)
     private void blockedByShield(DamageSource source, CallbackInfoReturnable<Boolean> ci) {
         Entity entity = source.getSource();

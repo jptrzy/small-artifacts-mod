@@ -14,8 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EndermanEntityMixin
 {
     @Inject(method = "isPlayerStaring", at = @At("HEAD"), cancellable = true)
-    private void isPlayerStaring(PlayerEntity player, CallbackInfoReturnable<Boolean> ci)
-    {
+    private void isPlayerStaring(PlayerEntity player, CallbackInfoReturnable<Boolean> ci){
         if (TrinketsApi.getTrinketComponent(player).get().isEquipped(ItemsRegister.ENDER_EYE)) ci.setReturnValue(false);
     }
 }
