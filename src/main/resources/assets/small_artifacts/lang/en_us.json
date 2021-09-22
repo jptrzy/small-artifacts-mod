@@ -1,5 +1,16 @@
 {
 
+  "container.small_artifacts.ender_sack": "Ender Sack",
+
+  "key.small_artifacts.ender_sack" : "Ender Sack",
+
+  "category.small_artifacts.small_artifacts": "Small Artifacts",
+
+
+
+  "item.small_artifacts.ender_sack": "Ender Sack",
+  "item.small_artifacts.ender_sack.description": "Compressed enderchest",
+
   "item.small_artifacts.stray_soul": "Stray Soul",
   "item.small_artifacts.stray_soul.description": "He couldn't find a home during his lifetime, however in his afterlife he wants to help adventures with this meter.",
 
