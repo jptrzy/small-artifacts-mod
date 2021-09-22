@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "small_artifacts:stray_soul"
+    "small_artifacts:stray_soul",
+    "small_artifacts:ender_sack"
   ]
 }

@@ -21,6 +21,9 @@
   "entrypoints": {
     "main": [
       "net.jptrzy.small.artifacts.Main"
+    ],
+    "client": [
+      "net.jptrzy.small.artifacts.Client"
     ]
   },
   "mixins": [

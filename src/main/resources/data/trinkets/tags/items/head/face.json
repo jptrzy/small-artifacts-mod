@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "small_artifacts:ender_eye"
+    "small_artifacts:ender_eye",
+    "small_artifacts:fish_eye_drops"
   ]
 }
