@@ -24,11 +24,6 @@ public class ItemsRegister {
     public static final Item SCUTE_CAPE = add("scute_cape", new ArtifactsItem( new Item.Settings() ));
     public static final Item STRAY_SOUL = add("stray_soul", new StraySoul( new Item.Settings() ));
 
-    public TypedActionResult<ItemStack> USE_STRAY_SOUL(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        return TypedActionResult.pass(user.getStackInHand(hand));
-    }
-
     public static void init() {
         for ( Map.Entry<String, Item> entry : items.entrySet() ) {
             Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, entry.getKey()), entry.getValue());

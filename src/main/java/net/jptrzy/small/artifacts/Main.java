@@ -25,6 +25,8 @@ public class Main implements ModInitializer {
 		}
 
 		ItemsRegister.init();
+		BlockRegister.init();
+
 
 //		LOGGER.debug("DEBUG FUCK DEBUG");
 //		LOGGER.error("ERROR");
