@@ -2,6 +2,7 @@ package net.jptrzy.small.artifacts.blocks;
 
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.jptrzy.small.artifacts.registry.BlockRegister;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,11 +28,36 @@ public class CopperAltarEntity extends BlockEntity implements BlockEntityClientS
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             player.sendMessage(new LiteralText("Hello, world!"), false);
-            this.item = new ItemStack(Items.COPPER_BLOCK );
+
+            //this.item = new ItemStack(Items.COPPER_BLOCK );
+            ItemStack itemStack = player.getMainHandStack();
+
+
+            if(this.item.isEmpty()) {
+                if (!player.getAbilities().creativeMode) {
+                    itemStack.decrement(1);
+                }
+
+                itemStack = itemStack.copy();
+                itemStack.setCount(1);
+
+                this.item = itemStack;
+            }
             this.sync();
         }
 
         return ActionResult.SUCCESS;
+    }
+
+    public void onBreak(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+        if (!world.isClient) {
+            player.sendMessage(new LiteralText("Break"), false);
+            if(!this.item.isEmpty()){
+                Block.dropStack(world, pos.up(1), this.item);
+                this.sync();
+            }
+
+        }
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, CopperAltarEntity be) { }

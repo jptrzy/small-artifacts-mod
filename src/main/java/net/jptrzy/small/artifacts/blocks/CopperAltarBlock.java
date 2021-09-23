@@ -44,6 +44,11 @@ public class CopperAltarBlock extends Block implements BlockEntityProvider {
        return ((CopperAltarEntity) world.getBlockEntity(pos)).onUse(state, world, pos, player, hand, hit);
     }
 
+    @Override
+    public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+        ((CopperAltarEntity) world.getBlockEntity(pos)).onBreak(state, world, pos, player);
+    }
+
     @Nullable
     protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
         return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
