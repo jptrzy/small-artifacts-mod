@@ -1,16 +1,12 @@
-package net.jptrzy.small.artifacts;
+package net.jptrzy.small.artifacts.registry;
 
-import net.jptrzy.small.artifacts.Items.ArtifactsItem;
-import net.jptrzy.small.artifacts.Items.EnderSack;
-import net.jptrzy.small.artifacts.Items.StraySoul;
-import net.minecraft.entity.player.PlayerEntity;
+import net.jptrzy.small.artifacts.Main;
+import net.jptrzy.small.artifacts.items.ArtifactsItem;
+import net.jptrzy.small.artifacts.items.EnderSack;
+import net.jptrzy.small.artifacts.items.StraySoul;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
 
 import java.util.HashMap;
 import java.util.Map;

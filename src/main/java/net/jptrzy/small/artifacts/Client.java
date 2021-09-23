@@ -4,16 +4,14 @@ import dev.emi.trinkets.api.TrinketsApi;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.jptrzy.small.artifacts.Main;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.jptrzy.small.artifacts.blocks.CopperAltarEntityRenderer;
 import net.jptrzy.small.artifacts.network.NetworkHandler;
 import net.jptrzy.small.artifacts.network.message.UseEnderSackMessage;
+import net.jptrzy.small.artifacts.registry.BlockRegister;
+import net.jptrzy.small.artifacts.registry.ItemsRegister;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
-import net.minecraft.util.Hand;
-import net.minecraft.world.World;
 
 public class Client implements ClientModInitializer {
 
@@ -21,6 +19,9 @@ public class Client implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        BlockEntityRendererRegistry.INSTANCE.register(BlockRegister.COPPER_ALTAR_ENTITY, CopperAltarEntityRenderer::new);
+
         ender_sack_key = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key."+ Main.MOD_ID+".ender_sack",
                 InputUtil.Type.KEYSYM, InputUtil.GLFW_KEY_X,

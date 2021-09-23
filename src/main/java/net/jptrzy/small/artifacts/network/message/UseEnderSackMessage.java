@@ -2,7 +2,7 @@ package net.jptrzy.small.artifacts.network.message;
 
 import dev.emi.trinkets.api.TrinketsApi;
 import net.fabricmc.fabric.api.network.PacketContext;
-import net.jptrzy.small.artifacts.ItemsRegister;
+import net.jptrzy.small.artifacts.registry.ItemsRegister;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 

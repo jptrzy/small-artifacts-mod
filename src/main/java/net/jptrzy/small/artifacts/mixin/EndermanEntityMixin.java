@@ -1,8 +1,7 @@
 package net.jptrzy.small.artifacts.mixin;
 
 import dev.emi.trinkets.api.TrinketsApi;
-import net.jptrzy.small.artifacts.ItemsRegister;
-import net.minecraft.entity.LivingEntity;
+import net.jptrzy.small.artifacts.registry.ItemsRegister;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,6 +1,6 @@
-package net.jptrzy.small.artifacts.Blocks;
+package net.jptrzy.small.artifacts.blocks;
 
-import net.jptrzy.small.artifacts.BlockRegister;
+import net.jptrzy.small.artifacts.registry.BlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -9,7 +9,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.LiteralText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -28,6 +27,13 @@ public class CopperAltarBlock extends Block implements BlockEntityProvider {
         super(settings);
     }
 
+    public final static VoxelShape COLLISION_SHAPE;
+    public final static VoxelShape BOTTOM_SHAPE;
+
+    public final static VoxelShape BASE_SHAPE;
+    public final static VoxelShape MIDDLE_SHAPE;
+    public final static VoxelShape TOP_SHAPE;
+
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new CopperAltarEntity(pos, state);
@@ -35,7 +41,7 @@ public class CopperAltarBlock extends Block implements BlockEntityProvider {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-       return CopperAltarEntity.onUse(state, world, pos, player, hand, hit);
+       return ((CopperAltarEntity) world.getBlockEntity(pos)).onUse(state, world, pos, player, hand, hit);
     }
 
     @Nullable
@@ -50,6 +56,15 @@ public class CopperAltarBlock extends Block implements BlockEntityProvider {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.cuboid(0f, 0f, 0f, 1f, 0.7f, 1f);
+        return COLLISION_SHAPE;
+    }
+
+    static{
+        BASE_SHAPE = Block.createCuboidShape(2, 0, 2, 14, 3, 14);
+        MIDDLE_SHAPE = Block.createCuboidShape(3, 3, 3, 13, 11, 13);
+        TOP_SHAPE = Block.createCuboidShape(2, 11, 2, 14, 13, 14);
+
+        BOTTOM_SHAPE = VoxelShapes.union(BASE_SHAPE, MIDDLE_SHAPE);
+        COLLISION_SHAPE = VoxelShapes.union(BOTTOM_SHAPE, TOP_SHAPE);
     }
 }
