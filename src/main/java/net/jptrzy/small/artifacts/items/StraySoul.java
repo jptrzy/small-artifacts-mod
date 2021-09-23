@@ -51,12 +51,10 @@ public class StraySoul extends ArtifactsItem {
             sWorld.playSound(null, player_spawn, SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.PLAYERS, 0.4f, 1f);
         }
 
-        return TypedActionResult.pass(user.getStackInHand(hand));
+        return TypedActionResult.success(user.getStackInHand(hand), true);
     }
 
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-        System.out.println("ENTITY USE");
-
         user.getItemCooldownManager().set(this, 60);
 
         if(entity instanceof PiglinEntity){
