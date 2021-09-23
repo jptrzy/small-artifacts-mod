@@ -24,7 +24,7 @@ public class BlockRegister {
     public static Map<String, Block> blocks = new HashMap<String, Block>();
 
     public static final Block COPPER_ALTAR = add("copper_altar", new CopperAltarBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f)) );
-    public static final Block NETHERITE_SHULKERBOX_BLOCK = add("netherite_shulkerbox", new ShulkerBoxBlock(null, FabricBlockSettings.of(Material.METAL).strength(4.0f)));
+    //public static final Block NETHERITE_SHULKERBOX_BLOCK = add("netherite_shulkerbox", new ShulkerBoxBlock(null, FabricBlockSettings.of(Material.METAL).strength(4.0f)));
 
     public static BlockEntityType<CopperAltarEntity> COPPER_ALTAR_ENTITY;
 
@@ -33,7 +33,7 @@ public class BlockRegister {
 
         for ( Map.Entry<String, Block> entry : blocks.entrySet() ) {
             Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, entry.getKey()), entry.getValue());
-            Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, entry.getKey()), new BlockItem(entry.getValue(), new FabricItemSettings().group(ItemGroup.MISC)));
+            Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, entry.getKey()), new BlockItem(entry.getValue(), new FabricItemSettings().group(ItemGroup.DECORATIONS)));
         }
     }
 

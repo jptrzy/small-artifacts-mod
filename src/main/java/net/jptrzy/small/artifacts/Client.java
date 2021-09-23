@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.jptrzy.small.artifacts.blocks.CopperAltarEntityRenderer;
+import net.jptrzy.small.artifacts.items.EnderSack;
 import net.jptrzy.small.artifacts.network.NetworkHandler;
 import net.jptrzy.small.artifacts.network.message.UseEnderSackMessage;
 import net.jptrzy.small.artifacts.registry.BlockRegister;
@@ -31,6 +32,7 @@ public class Client implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (ender_sack_key.wasPressed()) {
                 if(TrinketsApi.getTrinketComponent(client.player).get().isEquipped(ItemsRegister.ENDER_POUCH)){
+                    EnderSack.PlayOpenSound(client.world, client.player);
                     NetworkHandler.sendToServer(new UseEnderSackMessage());
                 }
             }

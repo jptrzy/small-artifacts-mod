@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class CopperAltarEntity extends BlockEntity implements BlockEntityClientSerializable {
 
-    private ItemStack item = new ItemStack(Items.DIAMOND );
+    private ItemStack item = new ItemStack(Items.AIR);
     private boolean crafting = false;
 
     public CopperAltarEntity(BlockPos pos, BlockState state) {
@@ -27,21 +27,18 @@ public class CopperAltarEntity extends BlockEntity implements BlockEntityClientS
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            player.sendMessage(new LiteralText("Hello, world!"), false);
-
-            //this.item = new ItemStack(Items.COPPER_BLOCK );
             ItemStack itemStack = player.getMainHandStack();
+            ItemStack clone;
 
+            if(this.item.isEmpty() && !itemStack.isEmpty()) {
+                clone = itemStack.copy();
+                clone.setCount(1);
 
-            if(this.item.isEmpty()) {
                 if (!player.getAbilities().creativeMode) {
                     itemStack.decrement(1);
                 }
 
-                itemStack = itemStack.copy();
-                itemStack.setCount(1);
-
-                this.item = itemStack;
+                this.item = clone;
             }
             this.sync();
         }
@@ -51,12 +48,11 @@ public class CopperAltarEntity extends BlockEntity implements BlockEntityClientS
 
     public void onBreak(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         if (!world.isClient) {
-            player.sendMessage(new LiteralText("Break"), false);
             if(!this.item.isEmpty()){
                 Block.dropStack(world, pos.up(1), this.item);
+                this.item = new ItemStack(Items.AIR);
                 this.sync();
             }
-
         }
     }
 
