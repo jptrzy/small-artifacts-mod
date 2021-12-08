@@ -1,6 +1,5 @@
 package net.jptrzy.small.artifacts.blocks;
 
-import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.jptrzy.small.artifacts.registry.BlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -9,14 +8,18 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class CopperAltarEntity extends BlockEntity implements BlockEntityClientSerializable {
+public class CopperAltarEntity extends BlockEntity {
 
     private ItemStack item = new ItemStack(Items.AIR);
     private boolean crafting = false;
@@ -40,7 +43,7 @@ public class CopperAltarEntity extends BlockEntity implements BlockEntityClientS
 
                 this.item = clone;
             }
-            this.sync();
+            this.notifyListeners();
         }
 
         return ActionResult.SUCCESS;
@@ -51,7 +54,7 @@ public class CopperAltarEntity extends BlockEntity implements BlockEntityClientS
             if(!this.item.isEmpty()){
                 Block.dropStack(world, pos.up(1), this.item);
                 this.item = new ItemStack(Items.AIR);
-                this.sync();
+                this.notifyListeners();
             }
         }
     }
@@ -59,13 +62,11 @@ public class CopperAltarEntity extends BlockEntity implements BlockEntityClientS
     public static void tick(World world, BlockPos pos, BlockState state, CopperAltarEntity be) { }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound tag) {
+    public void writeNbt(NbtCompound tag) {
         super.writeNbt(tag);
 
         tag.putBoolean("Crafing", this.crafting);
         tag.put("Item", this.item.writeNbt(new NbtCompound()));
-
-        return tag;
     }
 
     @Override
@@ -77,10 +78,24 @@ public class CopperAltarEntity extends BlockEntity implements BlockEntityClientS
     }
 
     @Override
-    public void fromClientTag(NbtCompound nbt){ this.readNbt(nbt); }
+    public NbtCompound toInitialChunkDataNbt() {
+        NbtCompound tag = super.toInitialChunkDataNbt();
+        writeNbt(tag);
+        return tag;
+    }
 
+    @Nullable
     @Override
-    public NbtCompound toClientTag(NbtCompound nbt){ return this.writeNbt(nbt);}
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    public void notifyListeners() {
+        this.markDirty();
+
+        if(world != null && !world.isClient())
+            world.updateListeners(getPos(), getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+    }
 
     public ItemStack getItem(){return this.item;}
 }
