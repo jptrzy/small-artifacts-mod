@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.jptrzy.small.artifacts.network.NetworkHandler;
 import net.jptrzy.small.artifacts.registry.BlockRegister;
 import net.jptrzy.small.artifacts.registry.ItemsRegister;
+import net.jptrzy.small.artifacts.registry.TriggerRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.ShulkerBoxBlock;
@@ -34,11 +35,16 @@ public class Main implements ModInitializer {
 		ItemsRegister.init();
 		BlockRegister.init();
 		NetworkHandler.init();
+		TriggerRegister.init();
 
 		LOGGER.info("Initialize" + LOGGER.isDebugEnabled());
 	}
 
 	public static void debug(String text){
 		if(DEBUG) LOGGER.warn(text);
+	}
+
+	public static Identifier id(String path) {
+		return new Identifier(MOD_ID, path);
 	}
 }
