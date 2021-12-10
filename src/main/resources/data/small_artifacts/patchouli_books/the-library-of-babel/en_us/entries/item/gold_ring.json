@@ -8,7 +8,16 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Piglins loves gold no matter its form, but if they knew about this (heresy), they wouldn't be so nice for its creator."
+      "text": "I was searching for something that would calm down those pigs in the nether. And after some sleepless nights, I finally found a cheep way of doing this.  I simply made a copper ring and then with the help of a little brush and calm hands, I cover it whole in a thin layer of gold. When To try it I walk past them and they didn't event notice that it was only glided. It was my first success."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "small_artifacts:gold_ring",
+      "text": "Piglins loves gold no matter its form, but if they knew about this (heresy), they wouldn't be so nice for its holder."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Unfortunately I drop it and one of them gets time to take a look at it. This was my biggest mistake, because after realizing this $(l)$(5)\"heresy\"$(), this piglin called the rest of them. It was a miracle that I even got out of that mess.$(br)$(o)$(7)Remember to never give it to them.$()"
     }
   ]
 }

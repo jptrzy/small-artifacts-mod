@@ -1,0 +1,24 @@
+{
+  "name": "Scute Cape",
+  "icon": "small_artifacts:scute_cape",
+  "category": "small_artifacts:artifacts",
+  "extra_recipe_mappings": {
+    "small_artifacts:scute_cape": 2,
+    "small_artifacts:loose_scute_cape": 0
+  },
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "I really hate skeleton's arrows, whenever I go to a cave, some of them will eventually stick in myself. And this is why I adore turtle's shells. For a really long time I couldn't connect dots in my mind, but after reading old scripture I found a way to use them for myself. I get some scutes from dead turtles and get to work. After some time I create cape from them. Unfortunately after many test it fills unfinished, but in the same time I can't find a way to refine it. Scutes of this cape look so faded like they lacked energy. $(br)$(o)$(7)Maby I could use Copper Altar to infuse it with power of lightning.$()"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "small_artifacts:loose_scute_cape",
+      "text": "Fifty fifty defense against arrows and wearing it makes a little bit of a pain, but I think there's a way to refine it."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "I was right. Using Copper Altar made it posible to infuse cape with power of lightning. Still it is a little bit of a pain to wear, but it's better then before and now it does not pass any arrows like before."
+    }
+  ]
+}

@@ -1,11 +1,16 @@
 package net.jptrzy.small.artifacts.blocks;
 
+import net.jptrzy.small.artifacts.registry.BlockRegister;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -14,11 +19,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Random;
 
 
 public class CopperAltarBlock extends OxidizableBlock implements BlockEntityProvider, Waterloggable {
@@ -68,6 +76,16 @@ public class CopperAltarBlock extends OxidizableBlock implements BlockEntityProv
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean water = fluidState.getFluid() == Fluids.WATER;
         return (BlockState)((BlockState)this.getDefaultState()).with(WATERLOGGED, water);
+    }
+
+    @Nullable
+    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
+        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, BlockRegister.COPPER_ALTAR_ENTITY, (world1, pos, state1, be) -> CopperAltarEntity.tick(world1, pos, state1, be));
     }
 
     static{

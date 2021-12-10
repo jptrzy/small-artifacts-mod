@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "small_artifacts:loose_scute_cape",
     "small_artifacts:scute_cape"
   ]
 }

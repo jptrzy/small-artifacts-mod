@@ -12,3 +12,9 @@
 * balloon
 * invisible cape
 * copper ring
+
+
+##Achigments:
+* Unfinished Artifact - after failed defence
+* Power of Thunder - after seeing lightning striking copper_altar
+* Piglins Anger - after piglin pickup gold ring

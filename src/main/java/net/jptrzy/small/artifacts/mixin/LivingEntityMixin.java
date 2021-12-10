@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
+import java.util.Random;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
@@ -26,16 +27,23 @@ public class LivingEntityMixin {
         if ( (LivingEntity) (Object) this instanceof PlayerEntity && entity instanceof ArrowEntity) {
             PlayerEntity p = (PlayerEntity) (Object) this;
             Optional<TrinketComponent> optional = TrinketsApi.getTrinketComponent((LivingEntity) (Object) this);
-            if(optional.isPresent() && optional.get().isEquipped(ItemsRegister.SCUTE_CAPE) && p.getHungerManager().getFoodLevel() > 0){
-                if(!p.getEntityWorld().isClient()){
-//                   p.getHungerManager().setExhaustion( p.getHungerManager().getExhaustion() + 8 );
-                    int hunger = p.getHungerManager().getFoodLevel() - 3;
-                    if(hunger < 0){
-                        hunger = 0;
+            if(optional.isPresent() && p.getHungerManager().getFoodLevel() > 0){
+                if(optional.get().isEquipped(ItemsRegister.SCUTE_CAPE) || optional.get().isEquipped(ItemsRegister.LOOSE_SCUTE_CAPE)) {
+                    if (!p.getEntityWorld().isClient()) {
+                        //                   p.getHungerManager().setExhaustion( p.getHungerManager().getExhaustion() + 8 );
+                        int hunger = 2;
+                        if(optional.get().isEquipped(ItemsRegister.LOOSE_SCUTE_CAPE)) {
+                            if(new Random().nextBoolean()){
+                                return;
+                            }
+                            hunger = 4;
+                        }
+                        hunger = p.getHungerManager().getFoodLevel() - hunger;
+                        if (hunger < 0) { hunger = 0; }
+                        p.getHungerManager().setFoodLevel(hunger);
+                        ci.setReturnValue(true);
                     }
-                    p.getHungerManager().setFoodLevel(hunger);
                 }
-                ci.setReturnValue(true);
             }
         }
 
