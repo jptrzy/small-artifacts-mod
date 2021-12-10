@@ -23,7 +23,7 @@ public class LightningEntityMixin {
             BlockEntity entity =  world.getBlockEntity(ci.getReturnValue().get());
             if(entity instanceof CopperAltarEntity){
                 // Runs multiple times
-                Main.LOGGER.warn("Altar");
+                ((CopperAltarEntity) entity).onElectrocution();
             }
         }
     }

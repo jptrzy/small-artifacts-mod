@@ -1,10 +1,7 @@
 package net.jptrzy.small.artifacts.blocks;
 
-import net.jptrzy.small.artifacts.registry.BlockRegister;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -21,7 +18,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 
 
@@ -54,16 +50,6 @@ public class CopperAltarBlock extends OxidizableBlock implements BlockEntityProv
     public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
         ((CopperAltarEntity) world.getBlockEntity(pos)).onBreak(state, world, pos, player);
     }
-
-//    @Nullable
-//    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
-//        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
-//    }
-//
-//    @Override
-//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-//        return checkType(type, BlockRegister.COPPER_ALTAR_ENTITY, (world1, pos, state1, be) -> CopperAltarEntity.tick(world1, pos, state1, be));
-//    }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {

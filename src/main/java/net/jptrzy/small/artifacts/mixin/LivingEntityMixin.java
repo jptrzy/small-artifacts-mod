@@ -2,6 +2,7 @@ package net.jptrzy.small.artifacts.mixin;
 
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
+import net.jptrzy.small.artifacts.Main;
 import net.jptrzy.small.artifacts.registry.ItemsRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -25,9 +26,14 @@ public class LivingEntityMixin {
         if ( (LivingEntity) (Object) this instanceof PlayerEntity && entity instanceof ArrowEntity) {
             PlayerEntity p = (PlayerEntity) (Object) this;
             Optional<TrinketComponent> optional = TrinketsApi.getTrinketComponent((LivingEntity) (Object) this);
-            if(optional.isPresent() && optional.get().isEquipped(ItemsRegister.SCUTE_CAPE)){
+            if(optional.isPresent() && optional.get().isEquipped(ItemsRegister.SCUTE_CAPE) && p.getHungerManager().getFoodLevel() > 0){
                 if(!p.getEntityWorld().isClient()){
-                    p.getHungerManager().setExhaustion( p.getHungerManager().getExhaustion() + 8 );
+//                   p.getHungerManager().setExhaustion( p.getHungerManager().getExhaustion() + 8 );
+                    int hunger = p.getHungerManager().getFoodLevel() - 3;
+                    if(hunger < 0){
+                        hunger = 0;
+                    }
+                    p.getHungerManager().setFoodLevel(hunger);
                 }
                 ci.setReturnValue(true);
             }

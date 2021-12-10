@@ -1,5 +1,6 @@
 package net.jptrzy.small.artifacts.blocks;
 
+import net.jptrzy.small.artifacts.Main;
 import net.jptrzy.small.artifacts.registry.BlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,7 +29,9 @@ public class CopperAltarEntity extends BlockEntity {
         super(BlockRegister.COPPER_ALTAR_ENTITY, pos, state);
     }
 
-    
+    public void onElectrocution(){
+        Main.LOGGER.warn("Altar just works ;D.");
+    }
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {

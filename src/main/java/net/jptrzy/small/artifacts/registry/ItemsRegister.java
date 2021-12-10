@@ -17,6 +17,7 @@ public class ItemsRegister {
 
     public static final Item GOLD_RING = add("gold_ring", new ArtifactsItem( new Item.Settings() ));
     public static final Item ENDER_EYE = add("ender_eye", new ArtifactsItem( new Item.Settings() ));
+    public static final Item LOOSE_SCUTE_CAPE = add("loose_scute_cape", new ArtifactsItem( new Item.Settings() ));
     public static final Item SCUTE_CAPE = add("scute_cape", new ArtifactsItem( new Item.Settings() ));
     public static final Item STRAY_SOUL = add("stray_soul", new StraySoul( new Item.Settings() ));
     //public static final Item FISH_EYE_DROPS = add("fish_eye_drops", new ArtifactsItem( new Item.Settings() ));
