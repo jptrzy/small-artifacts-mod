@@ -1,0 +1,14 @@
+{
+  "name": "Gilded Copper Ring",
+  "icon": "small_artifacts:gold_ring",
+  "category": "small_artifacts:artifacts",
+  "extra_recipe_mappings": {
+    "small_artifacts:gold_ring": 0
+  },
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Piglins loves gold no matter its form, but if they knew about this (heresy), they wouldn't be so nice for its creator."
+    }
+  ]
+}

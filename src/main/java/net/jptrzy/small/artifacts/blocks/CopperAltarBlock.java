@@ -1,14 +1,18 @@
 package net.jptrzy.small.artifacts.blocks;
 
 import net.jptrzy.small.artifacts.registry.BlockRegister;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -21,11 +25,9 @@ import org.jetbrains.annotations.Nullable;
 
 
 
-public class CopperAltarBlock extends Block implements BlockEntityProvider {
+public class CopperAltarBlock extends OxidizableBlock implements BlockEntityProvider, Waterloggable {
 
-    public CopperAltarBlock(Settings settings) {
-        super(settings);
-    }
+    public static final BooleanProperty WATERLOGGED;
 
     public final static VoxelShape COLLISION_SHAPE;
     public final static VoxelShape BOTTOM_SHAPE;
@@ -33,6 +35,10 @@ public class CopperAltarBlock extends Block implements BlockEntityProvider {
     public final static VoxelShape BASE_SHAPE;
     public final static VoxelShape MIDDLE_SHAPE;
     public final static VoxelShape TOP_SHAPE;
+
+    public CopperAltarBlock(Settings settings) {
+        super(OxidationLevel.UNAFFECTED, settings);
+    }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
@@ -49,19 +55,33 @@ public class CopperAltarBlock extends Block implements BlockEntityProvider {
         ((CopperAltarEntity) world.getBlockEntity(pos)).onBreak(state, world, pos, player);
     }
 
-    @Nullable
-    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
-        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
-    }
-
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, BlockRegister.COPPER_ALTAR_ENTITY, (world1, pos, state1, be) -> CopperAltarEntity.tick(world1, pos, state1, be));
-    }
+//    @Nullable
+//    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker) {
+//        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
+//    }
+//
+//    @Override
+//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+//        return checkType(type, BlockRegister.COPPER_ALTAR_ENTITY, (world1, pos, state1, be) -> CopperAltarEntity.tick(world1, pos, state1, be));
+//    }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         return COLLISION_SHAPE;
+    }
+
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(new Property[]{WATERLOGGED});
+    }
+
+    public FluidState getFluidState(BlockState state) {
+        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        boolean water = fluidState.getFluid() == Fluids.WATER;
+        return (BlockState)((BlockState)this.getDefaultState()).with(WATERLOGGED, water);
     }
 
     static{
@@ -71,5 +91,7 @@ public class CopperAltarBlock extends Block implements BlockEntityProvider {
 
         BOTTOM_SHAPE = VoxelShapes.union(BASE_SHAPE, MIDDLE_SHAPE);
         COLLISION_SHAPE = VoxelShapes.union(BOTTOM_SHAPE, TOP_SHAPE);
+
+        WATERLOGGED = Properties.WATERLOGGED;
     }
 }

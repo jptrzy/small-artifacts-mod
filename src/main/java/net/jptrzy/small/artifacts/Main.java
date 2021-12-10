@@ -30,17 +30,10 @@ public class Main implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		//DON'T WORK
-		if(DEBUG){ setLevel(LOGGER, Level.DEBUG); }
 
 		ItemsRegister.init();
 		BlockRegister.init();
-
 		NetworkHandler.init();
-
-//		LOGGER.debug("DEBUG FUCK DEBUG");
-//		LOGGER.error("ERROR");
-//		LOGGER.warn("WARN");
 
 		LOGGER.info("Initialize" + LOGGER.isDebugEnabled());
 	}
@@ -48,22 +41,4 @@ public class Main implements ModInitializer {
 	public static void debug(String text){
 		if(DEBUG) LOGGER.warn(text);
 	}
-
-	public static void setLevel(Logger logger, Level level) {
-		final LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
-		final Configuration config = ctx.getConfiguration();
-
-		LoggerConfig loggerConfig = config.getLoggerConfig(logger.getName());
-		LoggerConfig specificConfig = loggerConfig;
-
-		if (!loggerConfig.getName().equals(logger.getName())) {
-			specificConfig = new LoggerConfig(logger.getName(), level, true);
-			specificConfig.setParent(loggerConfig);
-			config.addLogger(logger.getName(), specificConfig);
-		}
-		specificConfig.setLevel(level);
-		ctx.updateLoggers();
-	}
-
-
 }

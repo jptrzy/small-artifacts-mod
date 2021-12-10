@@ -19,6 +19,6 @@ public class ArtifactsItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, java.util.List<Text> tooltip, TooltipContext context){
-        tooltip.add( new TranslatableText("item."+Registry.ITEM.getId(this).toString().replace(":",".") + ".description" ) );
+        //tooltip.add( new TranslatableText("item."+Registry.ITEM.getId(this).toString().replace(":",".") + ".description" ) );
     }
 }

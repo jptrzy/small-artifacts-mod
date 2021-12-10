@@ -6,7 +6,8 @@
   "mixins": [
     "PiglinBrainMixin",
     "EndermanEntityMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "LightningEntityMixin"
   ],
   "client": [
   ],
