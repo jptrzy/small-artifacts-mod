@@ -15,17 +15,17 @@
   "item.small_artifacts.loose_scute_cape": "Loose Scute Cape",
   "item.small_artifacts.scute_cape": "Scute Cape",
   "item.small_artifacts.gold_ring": "Gilded Copper Ring",
-  "item.small_artifacts.index_of_babels_library": "Ind of Babel's Library",
+  "item.small_artifacts.index_of_babels_library": "Babel's Library Index",
 
 
-  "advancement.small_artifacts.root.title":"The begining of new end",
+  "advancement.small_artifacts.root.title":"Small Artifacts",
   "advancement.small_artifacts.copper_altar.title":"Nice display",
   "advancement.small_artifacts.copper_altar_powered.title":"Unlimited power!",
   "advancement.small_artifacts.scute_cape.title":"Final Creation",
   "advancement.small_artifacts.gold_ring.title":"Peace of mind",
   "advancement.small_artifacts.piglins_anger.title":"What a heresy",
 
-  "advancement.small_artifacts.root.description":"",
+  "advancement.small_artifacts.root.description":"The begining of new end",
   "advancement.small_artifacts.copper_altar.description":"",
   "advancement.small_artifacts.copper_altar_powered.description":"",
   "advancement.small_artifacts.scute_cape.description":"",

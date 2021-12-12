@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "cbc",
+    "bab",
+    "cbc"
+  ],
+  "key": {
+    "a": {"item": "minecraft:ender_chest"},
+    "b": {"item": "minecraft:leather"},
+    "c": {"item": "minecraft:chorus_fruit"}
+  },
+  "result": {
+    "item": "small_artifacts:ender_sack"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Copper Altar",
+  "icon": "small_artifacts:copper_altar",
+  "category": "small_artifacts:basics",
+  "extra_recipe_mappings": {
+    "small_artifacts:copper_altar": 0
+  },
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "I based this altar basing on the one that I saw in the ancient structure. This structure was an really interesting one. It was whole made  out of copper with some gold accents and only the floor was made of some unknown for me stone. Walls of this pyramid were engraved with hieroglyphs themed around lightning."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "small_artifacts:copper_altar",
+      "text": "This is really just a simple display pillar nothing interesting."
+    },
+    {
+      "type": "patchouli:text",
+      "advancement":"small_artifacts:copper_altar_powered",
+      "text": "I was a fool to not understand the usage of this altar. Simply putted with the right contraption I can use this pillar to infuse an item on it with the power of lightning. The only problem is how to get the lightning to strike the contraption."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "advancement":"small_artifacts:copper_altar_powered",
+      "name":"Example Contraption",
+      "multiblock": {
+        "mapping": {
+          "A": "small_artifacts:copper_altar",
+          "C": "minecraft:copper_block",
+          "R": "minecraft:lightning_rod"
+        },
+        "pattern": [
+          [" R "," 0 ","   "],
+          [" C "," A ","   "],
+          [" C "," C ","   "]
+        ]
+      },
+      "enable_visualize":false,
+      "text": "This is just an example. For shure theres much more space for upgrading this structure than you think."
+    }
+  ]
+}

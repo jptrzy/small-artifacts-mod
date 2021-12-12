@@ -1,0 +1,15 @@
+{
+  "name": "Ender Sack",
+  "icon": "small_artifacts:ender_sack",
+  "category": "small_artifacts:artifacts",
+  "extra_recipe_mappings": {
+    "small_artifacts:ender_sack": 0
+  },
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "small_artifacts:ender_sack",
+      "text": "There's nothing interesting to talk about just ender chest minimized to form of a sack."
+    }
+  ]
+}
