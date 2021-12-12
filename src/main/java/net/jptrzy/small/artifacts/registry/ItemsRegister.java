@@ -3,6 +3,7 @@ package net.jptrzy.small.artifacts.registry;
 import net.jptrzy.small.artifacts.Main;
 import net.jptrzy.small.artifacts.items.ArtifactsItem;
 import net.jptrzy.small.artifacts.items.EnderSack;
+import net.jptrzy.small.artifacts.items.IndexOfBabelsLibrary;
 import net.jptrzy.small.artifacts.items.StraySoul;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -24,6 +25,7 @@ public class ItemsRegister {
     //public static final Item FRIENDLY_MIMIC = add("friendly_mimic", new ArtifactsItem( new Item.Settings() ));
     //public static final Item FRIENDLY_VEX = add("friendly_vex", new ArtifactsItem( new Item.Settings() ));
     public static final Item ENDER_POUCH = add("ender_sack", new EnderSack( new Item.Settings() ));
+    public static final Item INDEX_OF_BABELS_LIBRARY = add("index_of_babels_library", new IndexOfBabelsLibrary( new Item.Settings() ));
 
 
     public static void init() {

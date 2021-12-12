@@ -1,0 +1,37 @@
+{
+    "parent": "small_artifacts:copper_altar_powered",
+    "display": {
+        "icon": {
+            "item": "small_artifacts:scute_cape"
+        },
+        "title": {
+            "translate": "advancement.small_artifacts.scute_cape.title"
+        },
+        "description": {
+            "translate": "advancement.small_artifacts.scute_cape.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": false
+    },
+    "criteria": {
+        "scute_cape": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "small_artifacts:scute_cape"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+          "scute_cape"
+        ]
+    ]
+}

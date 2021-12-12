@@ -1,0 +1,28 @@
+{
+    "parent": "small_artifacts:copper_altar",
+    "display": {
+        "icon": {
+            "item": "minecraft:lightning_rod"
+        },
+        "title": {
+            "translate": "advancement.small_artifacts.copper_altar_powered.title"
+        },
+        "description": {
+            "translate": "advancement.small_artifacts.copper_altar_powered.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "copper_altar_powered": {
+            "trigger": "small_artifacts:copper_altar_powered"
+        }
+    },
+    "requirements": [
+        [
+          "copper_altar_powered"
+        ]
+    ]
+}

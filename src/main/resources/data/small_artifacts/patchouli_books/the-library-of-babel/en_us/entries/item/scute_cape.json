@@ -17,8 +17,12 @@
       "text": "Fifty fifty defense against arrows and wearing it makes a little bit of a pain, but I think there's a way to refine it."
     },
     {
-      "type": "patchouli:text",
-      "text": "I was right. Using Copper Altar made it posible to infuse cape with power of lightning. Still it is a little bit of a pain to wear, but it's better then before and now it does not pass any arrows like before."
+      "type": "small_artifacts:copper_altar",
+      "advancement":"small_artifacts:scute_cape",
+      "text": "I was right. Using Copper Altar made it posible to infuse cape with power of lightning. Still it is a little bit of a pain to wear, but it's better then before and now it does not pass any arrows like before.",
+      "header":"Scute Cape",
+      "inp":"small_artifacts:loose_scute_cape",
+      "out":"small_artifacts:scute_cape"
     }
   ]
 }

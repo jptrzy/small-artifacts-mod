@@ -1,0 +1,28 @@
+{
+    "parent": "small_artifacts:gold_ring",
+    "display": {
+        "icon": {
+            "item": "minecraft:music_disc_pigstep"
+        },
+        "title": {
+            "translate": "advancement.small_artifacts.piglins_anger.title"
+        },
+        "description": {
+            "translate": "advancement.small_artifacts.piglins_anger.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": true
+    },
+    "criteria": {
+        "piglins_anger": {
+            "trigger": "small_artifacts:piglin_anger"
+        }
+    },
+    "requirements": [
+        [
+          "piglins_anger"
+        ]
+    ]
+}

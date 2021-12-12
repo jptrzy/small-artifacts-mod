@@ -32,7 +32,7 @@ public class BlockRegister {
 
         for ( Map.Entry<String, Block> entry : blocks.entrySet() ) {
             Registry.register(Registry.BLOCK, new Identifier(Main.MOD_ID, entry.getKey()), entry.getValue());
-            Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, entry.getKey()), new BlockItem(entry.getValue(), new FabricItemSettings().group(ItemGroup.DECORATIONS)));
+            Registry.register(Registry.ITEM, new Identifier(Main.MOD_ID, entry.getKey()), new BlockItem(entry.getValue(), new FabricItemSettings().group(Main.ITEM_GROUP)));
         }
     }
 

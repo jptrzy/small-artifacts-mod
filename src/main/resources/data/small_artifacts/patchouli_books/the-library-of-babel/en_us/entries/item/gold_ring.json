@@ -17,6 +17,7 @@
     },
     {
       "type": "patchouli:text",
+      "advancement":"small_artifacts:piglins_anger",
       "text": "Unfortunately I drop it and one of them gets time to take a look at it. This was my biggest mistake, because after realizing this $(l)$(5)\"heresy\"$(), this piglin called the rest of them. It was a miracle that I even got out of that mess.$(br)$(o)$(7)Remember to never give it to them.$()"
     }
   ]

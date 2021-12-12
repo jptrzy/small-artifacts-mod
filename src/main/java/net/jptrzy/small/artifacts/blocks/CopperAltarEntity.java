@@ -3,10 +3,13 @@ package net.jptrzy.small.artifacts.blocks;
 import net.jptrzy.small.artifacts.Main;
 import net.jptrzy.small.artifacts.registry.BlockRegister;
 import net.jptrzy.small.artifacts.registry.ItemsRegister;
+import net.jptrzy.small.artifacts.registry.TriggerRegister;
+import net.jptrzy.small.artifacts.triggers.CopperAltarPoweredTrigger;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.util.ParticleUtil;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -15,6 +18,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.LiteralText;
@@ -22,12 +26,15 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Random;
 
 public class CopperAltarEntity extends BlockEntity {
@@ -40,6 +47,17 @@ public class CopperAltarEntity extends BlockEntity {
     }
 
     public void onElectrocution(){
+        if(!this.world.isClient()) {
+            List<Entity> f = this.world.getOtherEntities(null, new Box(-8, -8, -8, 8, 8, 8));
+
+            for (int g = 0; g < f.size(); ++g) {
+                Entity entity = (Entity) f.get(g);
+                if (entity instanceof PlayerEntity) {
+                    ((CopperAltarPoweredTrigger) TriggerRegister.COPPER_ALTAR_POWERED_TRIGGER).trigger((ServerPlayerEntity) entity);
+                }
+            }
+        }
+
         Main.LOGGER.warn("Altar just works ;D.");
         if(!this.item.isEmpty() && isCraftable(this.item)) {
             this.crafting = 60;

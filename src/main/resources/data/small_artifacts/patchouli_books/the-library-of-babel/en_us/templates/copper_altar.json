@@ -1,0 +1,75 @@
+{
+    "components": [
+        {
+            "type": "patchouli:header",
+            "centered": true,
+            "text": "#header",
+            "x": 56,
+            "y": -6
+        },
+        {
+            "type": "patchouli:image",
+            "image": "small_artifacts:textures/gui/small_artifacts/lightning.png",
+            "height": 16,
+            "width": 16,
+            "texture_height": 16,
+            "texture_width": 16,
+            "x": 44,
+            "y": 24,
+            "scale":"1.5"
+        },
+        {
+            "type": "patchouli:image",
+            "image": "small_artifacts:textures/gui/small_artifacts/copper_altar.png",
+            "height": 16,
+            "width": 16,
+            "texture_height": 16,
+            "texture_width": 16,
+            "x": 16,
+            "y": 36,
+            "scale":"1.5"
+        },
+        {
+            "type": "patchouli:image",
+            "image": "small_artifacts:textures/gui/small_artifacts/copper_altar.png",
+            "height": 16,
+            "width": 16,
+            "texture_height": 16,
+            "texture_width": 16,
+            "x": 74,
+            "y": 36,
+            "scale":"1.5"
+        },
+        {
+            "type": "patchouli:item",
+            "item": "#inp",
+            "framed":true,
+            "x": 20,
+            "y": 16
+        },
+        {
+            "type": "patchouli:item",
+            "item": "#out",
+            "framed":true,
+            "link_recipe":true,
+            "x": 78,
+            "y": 16
+        },
+        {
+            "type": "patchouli:text",
+            "text": "#text",
+            "x": 0,
+            "y": 72
+        },
+        {
+            "type": "patchouli:separator",
+            "x": 0,
+            "y": 66
+        },
+        {
+            "type": "patchouli:separator",
+            "x": 0,
+            "y": 4
+        }
+    ]
+}

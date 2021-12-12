@@ -53,7 +53,6 @@ public class StraySoul extends ArtifactsItem {
 
         return TypedActionResult.success(user.getStackInHand(hand), true);
     }
-
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
         user.getItemCooldownManager().set(this, 60);
 

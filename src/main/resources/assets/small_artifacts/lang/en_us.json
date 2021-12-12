@@ -1,31 +1,41 @@
 {
 
   "container.small_artifacts.ender_sack": "Ender Sack",
-
   "key.small_artifacts.ender_sack" : "Ender Sack",
-
-  "category.small_artifacts.small_artifacts": "Small Artifacts",
-
-
-
   "item.small_artifacts.ender_sack": "Ender Sack",
   "item.small_artifacts.ender_sack.description": "Compressed enderchest",
-
   "item.small_artifacts.stray_soul": "Stray Soul",
   "item.small_artifacts.stray_soul.description": "He couldn't find a home during his lifetime, however in his afterlife he wants to help adventures with this meter.",
-
-  "item.small_artifacts.loose_scute_cape": "Loose Scute Cape",
-  "item.small_artifacts.scute_cape": "Scute Cape",
-  "item.small_artifacts.scute_cape.description": "Good defense agains arrows, but wearing it makes a little bit of a pain.",
-
-  "item.small_artifacts.gold_ring": "Gilded Copper Ring",
-  "item.small_artifacts.gold_ring.description": "Piglins loves gold no matter its form, but if they knew about this (heresy), they wouldn't be so nice.",
-
   "item.small_artifacts.ender_eye": "Ender Eye",
   "item.small_artifacts.ender_eye.description": "Ahhh, rotten enderman eye.",
 
 
+  "----nothink----":"----new----",
+
+  "item.small_artifacts.loose_scute_cape": "Loose Scute Cape",
+  "item.small_artifacts.scute_cape": "Scute Cape",
+  "item.small_artifacts.gold_ring": "Gilded Copper Ring",
+  "item.small_artifacts.index_of_babels_library": "Ind of Babel's Library",
+
+
+  "advancement.small_artifacts.root.title":"The begining of new end",
+  "advancement.small_artifacts.copper_altar.title":"Nice display",
+  "advancement.small_artifacts.copper_altar_powered.title":"Unlimited power!",
+  "advancement.small_artifacts.scute_cape.title":"Final Creation",
+  "advancement.small_artifacts.gold_ring.title":"Peace of mind",
+  "advancement.small_artifacts.piglins_anger.title":"What a heresy",
+
+  "advancement.small_artifacts.root.description":"",
+  "advancement.small_artifacts.copper_altar.description":"",
+  "advancement.small_artifacts.copper_altar_powered.description":"",
+  "advancement.small_artifacts.scute_cape.description":"",
+  "advancement.small_artifacts.gold_ring.description":"",
+  "advancement.small_artifacts.piglins_anger.description":"",
+
+
+  "itemGroup.small_artifacts.general":"Small Artifacts",
+  "category.small_artifacts.small_artifacts": "Small Artifacts",
+
 
   "block.small_artifacts.copper_altar": "Copper Altar"
-
 }

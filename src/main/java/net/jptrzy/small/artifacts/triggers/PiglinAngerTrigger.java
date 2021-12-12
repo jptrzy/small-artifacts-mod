@@ -1,18 +1,18 @@
 package net.jptrzy.small.artifacts.triggers;
 
+import com.google.gson.JsonObject;
 import net.jptrzy.small.artifacts.Main;
 import net.minecraft.advancement.criterion.AbstractCriterion;
-import net.minecraft.predicate.entity.EntityPredicate;
-import net.minecraft.util.Identifier;
-import com.google.gson.JsonObject;
-import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer;
 import net.minecraft.advancement.criterion.AbstractCriterionConditions;
+import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer;
 import net.minecraft.predicate.entity.AdvancementEntityPredicateSerializer;
+import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 
-public class CopperAltarPoweredTrigger extends AbstractCriterion<CopperAltarPoweredTrigger.Conditions> {
+public class PiglinAngerTrigger extends AbstractCriterion<PiglinAngerTrigger.Conditions> {
 
-    public static final Identifier ID = Main.id("copper_altar_powered");
+    public static final Identifier ID = Main.id("piglin_anger");
 
     @Override
     public Identifier getId() {
