@@ -2,15 +2,15 @@
 
   "container.small_artifacts.ender_sack": "Ender Sack",
   "key.small_artifacts.ender_sack" : "Ender Sack",
+
+
   "item.small_artifacts.ender_sack": "Ender Sack",
-  "item.small_artifacts.ender_sack.description": "Compressed enderchest",
   "item.small_artifacts.stray_soul": "Stray Soul",
-  "item.small_artifacts.stray_soul.description": "He couldn't find a home during his lifetime, however in his afterlife he wants to help adventures with this meter.",
   "item.small_artifacts.ender_eye": "Ender Eye",
-  "item.small_artifacts.ender_eye.description": "Ahhh, rotten enderman eye.",
 
 
   "----nothink----":"----new----",
+
 
   "item.small_artifacts.loose_scute_cape": "Loose Scute Cape",
   "item.small_artifacts.scute_cape": "Scute Cape",
@@ -37,5 +37,8 @@
   "category.small_artifacts.small_artifacts": "Small Artifacts",
 
 
-  "block.small_artifacts.copper_altar": "Copper Altar"
+  "block.small_artifacts.copper_altar": "Copper Altar",
+
+
+  "warning.small_artifacts.stray_soul":"This soul doesn't want to kill you."
 }

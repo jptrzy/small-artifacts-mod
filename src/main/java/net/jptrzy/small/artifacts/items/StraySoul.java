@@ -10,6 +10,8 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -45,6 +47,12 @@ public class StraySoul extends ArtifactsItem {
             }else{
                 sWorld = server.getOverworld();
                 player_spawn = sWorld.getSpawnPos();
+            }
+
+
+            if(!world.getBlockState(player_spawn).isAir()){
+                user.sendSystemMessage(new TranslatableText("warning.small_artifacts.stray_soul"), Util.NIL_UUID);
+                return TypedActionResult.success(user.getStackInHand(hand), true);
             }
 
             sPlayer.teleport(sWorld, player_spawn.getX(), player_spawn.getY(), player_spawn.getZ(), sPlayer.getSpawnAngle(), 0.5F);

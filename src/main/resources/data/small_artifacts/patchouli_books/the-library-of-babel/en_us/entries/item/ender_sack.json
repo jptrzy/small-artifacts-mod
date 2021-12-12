@@ -7,6 +7,10 @@
   },
   "pages": [
     {
+      "type": "patchouli:text",
+      "text": ""
+    },
+    {
       "type": "patchouli:crafting",
       "recipe": "small_artifacts:ender_sack",
       "text": "There's nothing interesting to talk about just ender chest minimized to form of a sack."

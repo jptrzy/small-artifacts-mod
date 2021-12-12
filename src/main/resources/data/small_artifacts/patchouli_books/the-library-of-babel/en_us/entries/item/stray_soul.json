@@ -1,0 +1,19 @@
+{
+  "name": "Stray Soul",
+  "icon": "small_artifacts:stray_soul",
+  "category": "small_artifacts:artifacts",
+  "extra_recipe_mappings": {
+    "small_artifacts:stray_soul": 0
+  },
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": ""
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "small_artifacts:stray_soul",
+      "text": "He couldn't find a home during his lifetime, however in his afterlife he wants to help adventures with this meter."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Ender Eye",
+  "icon": "small_artifacts:ender_eye",
+  "category": "small_artifacts:artifacts",
+  "extra_recipe_mappings": {
+    "small_artifacts:ender_eye": 0
+  },
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": ""
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "small_artifacts:ender_eye",
+      "text": "Ahhh, rotten enderman eye."
+    }
+  ]
+}
